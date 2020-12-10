@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable linebreak-style */
 /* *******************************************************************************************
  *                                                                                           *
@@ -67,7 +68,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  let name = value.split(', ');
+  const name = value.split(', ');
   return name[1].substring(0, name[1].length - 1);
 }
 
@@ -114,11 +115,12 @@ function removeLeadingAndTrailingWhitespaces(value) {
  */
 function repeatString(value, count) {
   let str = '';
-  for (let i = 0; i < count; i++){
+  for (let i = 0; i < count; i++) {
     str += value;
   }
 
   return str;
+}
 
 /**
  * Remove the first occurrence of string inside another string
@@ -210,7 +212,7 @@ function extractEmails(str) {
  */
 function getRectangleString(width, height) {
   let str = '';
-  for (i = 0; i < width * height; i++){
+  for (let i = 0; i < width * height; i++) {
     if (i === 0) {
       str += '┌';
     } else if (i < width - 1) {
@@ -252,9 +254,7 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  return (str+'').replace(/[a-zA-Z]/gi,function(s){
-        return String.fromCharCode(s.charCodeAt(0)+(s.toLowerCase()<'n'?13:-13))
-        })
+  return (`${str}`).replace(/[a-zA-Z]/gi, (s) => String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13)));
 }
 
 /**
@@ -300,10 +300,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const cards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-                 'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-                 'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-                 'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
+  const cards = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
   return cards.indexOf(value);
 }
 
